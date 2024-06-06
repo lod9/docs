@@ -44,12 +44,12 @@
           "pages": [
             "paidresources/gym/getting-started",
             "paidresources/gym/configuration-guide",
-            "paidresources/gym/package-guide",
+            "paidresources/gym/package-guide"
           ]
         }
         
       ]
-    },
+    }
     
   ],
   "footerSocials": {
