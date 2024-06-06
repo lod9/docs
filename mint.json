@@ -7,23 +7,23 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#00a6ff",
-    "light": "#076bc9",
-    "dark": "#00a6ff",
+    "primary": "#F0D64E",
+    "light": "#7C6D1C",
+    "dark": "#F0D64E",
     "anchors": {
-      "from": "#00a6ff",
-      "to": "#076bc9"
+      "from": "#F0D64E",
+      "to": "#7C6D1C"
     }
   },
   "topbarLinks": [
     {
       "name": "Store",
-      "url": "https://trase.dev/"
+      "url": "https://soul.tebex.io/"
     }
   ],
   "topbarCtaButton": {
     "name": "Support",
-    "url": "https://discord.gg/trase"
+    "url": "https://discord.gg/scriptsfivem"
   },
   "tabs": [],
   "anchors": [],
@@ -32,117 +32,30 @@
       "group": "Get Started",
       "pages": [
         "introduction",
-        "terms-of-service",
         "escrow"
       ]
     },
     {
-      "group": "Paid Resources",
+      "group": "Scripts",
       "pages": [
         {
-          "group": "Donation System",
-          "icon": "wallet",
+          "group": "Gymnasium",
+          "icon": "gym",
           "pages": [
-            "paidresources/donation/getting-started",
-            "paidresources/donation/configuration-guide",
-            "paidresources/donation/package-guide",
-            "paidresources/donation/common-issues"
-          ]
-        },
-        {
-          "group": "Drug Dealer",
-          "icon": "cannabis",
-          "pages": [
-            "paidresources/dealer/getting-started",
-            "paidresources/dealer/configuration-guide",
-            "paidresources/dealer/rank-guide",
-            "paidresources/dealer/drug-guide",
-            "paidresources/dealer/common-issues"
-          ]
-        },
-        {
-          "group": "Drug System",
-          "icon": "prescription-bottle",
-          "pages": [
-            "paidresources/drugs/getting-started",
-            "paidresources/drugs/config-guide",
-            "paidresources/drugs/common-issues"
-          ]
-        },
-        {
-          "group": "Mining",
-          "icon": "gem",
-          "pages": [
-            "paidresources/mining/getting-started",
-            "paidresources/mining/config-guide"
-          ]
-        },
-        {
-          "group": "Store Robbery",
-          "icon": "store",
-          "pages": [
-            "paidresources/storerobbery/getting-started",
-            "paidresources/storerobbery/config-guide",
-            "paidresources/storerobbery/common-issues"
-          ]
-        },
-        {
-          "group": "Food Delivery",
-          "icon": "burger",
-          "pages": [
-            "paidresources/food_delivery/getting-started",
-            "paidresources/food_delivery/config-guide",
-            "paidresources/food_delivery/common-issues"
+            "paidresources/gym/getting-started",
+            "paidresources/gym/configuration-guide",
+            "paidresources/gym/package-guide",
           ]
         }
+        
       ]
     },
-    {
-      "group": "Free Resources",
-      "pages": [
-        {
-          "group": "Discord API",
-          "icon": "discord",
-          "pages": [
-            "freeresources/discord/getting-started",
-            "freeresources/discord/config-guide",
-            {
-              "group": "Usage",
-              "icon": "file-export",
-              "pages": [
-                "freeresources/discord/usage/getAvatar",
-                "freeresources/discord/usage/getRoles",
-                "freeresources/discord/usage/getUser",
-                "freeresources/discord/usage/getUsername",
-                "freeresources/discord/usage/hasRole"
-              ]
-            }
-          ]
-        },
-        {
-          "group": "Anti-Modded Money",
-          "icon": "sack-xmark",
-          "pages": [
-            "freeresources/antimoney/getting-started",
-            "freeresources/antimoney/config-guide"
-          ]
-        },
-        {
-          "group": "Ped Menu",
-          "icon": "horse-head",
-          "pages": [
-            "freeresources/pedmenu/getting-started",
-            "freeresources/pedmenu/config-guide"
-          ]
-        }
-      ]
-    }
+    
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/ImTrase",
-    "github": "https://github.com/ImTrase",
-    "website": "https://docs.trase.dev/",
-    "discord": "https://discord.gg/trase",
-    "youtube": "https://www.youtube.com/channel/UCsahVicuUGGJOB8ISnzeOLQ"
+    "github": "https://github.com/lod9",
+    "website": "https://soul.tebex.io",
+    "discord": "https://discord.gg/scriptsfivem",
+    "youtube": "https://www.youtube.com/channel/UC8tg9bRJ9SdlNoWn_mrJ5Zg"
   }
 }
