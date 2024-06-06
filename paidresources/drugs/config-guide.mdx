@@ -1,0 +1,155 @@
+---
+title: 'Configuration Guide'
+description: 'This is where you will find all the documentation covering the configuration for our script, if you need anything that is not a configurable option do not hesitate to reach out to use via [discord](https://discord.gg/trase)!'
+icon: 'pencil'
+---
+
+## Configuration Guide
+
+### Framework Selection
+This is where you can choose your framework, recommended to just leave this on "auto".
+```lua Config.lua
+Config.Framework = 'auto' -- (type: string)
+```
+
+### Trase Dealer Script
+This is the name of the "trase_dealer" resource, its required for the script. If you renamed it put the correct name here.
+```lua Config.lua
+Config.Dealer = 'trase_dealer' -- (type: string)
+```
+
+### Discord Logs
+This is where you can enable/disable discord logs. **If Enabled,** You need to set the webhook in `server/open.lua` on the first line.
+```lua Config.lua
+Config.DiscordLogs = true -- (type: boolean)
+```
+
+### Discord Role Benifits
+This is where you can configure discord roles to have and receive benifits (example, VIP users)
+```lua Config.lua
+Config.RoleBenifits = {
+    Enabled = true, -- (type: boolean) If enabled, players will get benifits from their discord role. (pulls from the top role in the list, so make sure the most important role is at the top.)
+    StackMultipliers = true, -- (type: boolean) If enabled, the player will stack the multipliers from the discordRole + rank.
+    Roles = { -- (type: table)
+        { -- You can add as many roles that you want!
+            RoleId = 960632501775257671, -- (type: number) the discord role ID
+            Benifits = {
+                CollectionSpeed = 25, -- 25% faster collection speed
+                ProcessSpeed = 25, -- 25% faster process speed
+                Multiplier = 2, -- 2x the rewards
+            }
+        }
+    }
+}
+```
+
+### Config.RaidCommand
+This is where you can enable/disable the raid command.
+```lua Config.lua
+Config.RaidCommand = {
+    Enabled = true, -- If enabled, players can use /raid to start a raid.
+    CountDown = 30, -- The time in seconds it will count down from.
+    AnnounceType = 2, -- 1 = Chat, 2 = TXAdmin Message (can be changed in server/open.lua)
+    Command = 'raid', -- The command to use to start a raid.
+    Jobs = { ['police'] = true, ['sheriff'] = true }, -- The jobs that can start a raid.
+    Radius = 100,
+    Duration = 2, -- The time in minutes the raid will last.
+    Punishment = 3 -- 1 = Wipe, 2 = Log, 3 = Wipe + Log
+}
+```
+
+### Change Misc Options
+This is where you can edit misc changes in the script
+```lua Config.lua
+Config.Options = {
+    DrawDistance = 5.0, -- The distance to draw the markers (increasing can hurt performance)
+    AutoRepeat = true, -- If enabled, the player will not need to press E to farm after each action.
+}
+```
+
+### Rank Command
+This is where you can enable and edit the command for the player to check there drug rank!
+```lua Config.lua
+Config.RankCommand = {
+    Enabled = true, -- If enabled, players can use /rank to view their rank.
+    Command = 'drugRank' -- The command to use to view the rank.
+}
+```
+
+### Rank Configuration
+This is where you can configure all the ranks for your server!
+```lua Config.lua
+Config.Ranks = { -- You can add as many ranks that you want!
+    {
+        RankLabel = 'Dealer', -- Label of the drug
+        SellRequirement = 10, -- The minimum amount of drugs needing to be sold to reach this rank.
+        Benifits = {
+            CollectionSpeed = 5, -- 5% faster collection speed
+            ProcessSpeed = 5, -- 5% faster process speed
+        }
+    },
+    {
+        RankLabel = 'Kingpin',
+        SellRequirement = 25,
+        Benifits = {
+            CollectionSpeed = 25, -- 25% faster collection speed
+            ProcessSpeed = 25, -- 25% faster process speed
+            Multiplier = 2, -- 2x the rewards
+        }
+    }
+}
+```
+
+### Drug Configuration
+This is where you can configure all the drugs for your server!
+```lua Config.lua
+Config.Drugs = {
+    -- Configured for: https://www.gta5-mods.com/maps/mlo-enhanced-coke-lab-sp-fivem-dvd6789
+    ['coke'] = { -- The name of the drug (used when police do /raid [location])
+        Label = 'Coke', -- Label of the drug
+        Speeds = {
+            Collection = 10, -- Time in seconds to collect the drug
+            Process = 5 -- Time in seconds to process the drug
+        },
+
+        Collection = {
+            Locations = { -- Table where all the collection points are located
+                vec3(882.4806, -1141.9399, 26.0383),
+                vec3(880.1509, -1141.8541, 26.0383),
+            },
+
+            -- For options view https://overextended.dev/ox_lib/Modules/Interface/Client/progress for the options. (for only prop + anim)
+            Options = {
+                Prop = { model = 'prop_coke_block_half_b', pos = vector3(0.13, 0.03, 0.02), rot = vector3(0.0, 0.0, 0.0) }, -- Prop
+                Anim = { dict = 'mini@repair', clip = 'fixing_a_ped' } -- Animation
+            },
+
+            Rewards = { -- A table containing all the rewards for collecting. [itemName] = itemAmount
+                ['coke_bag'] = 1
+            },
+
+            Requirements = false -- Can be set to false for no requirements or can be a table with requirements (example below)
+        },
+
+        Process = {
+            Locations = { -- Table where all the process points are located
+                vec3(879.9382, -1132.7386, 26.0384)
+            },
+
+            -- For options view https://overextended.dev/ox_lib/Modules/Interface/Client/progress for the options. (for only prop + anim)
+            Options = {
+                Prop = { model = 'hei_prop_hei_drug_pack_01b', pos = vector3(0.13, 0.03, 0.02), rot = vector3(0.0, 0.0, 0.0) },
+                Anim = { dict = 'mini@repair', clip = 'fixing_a_ped' } -- Anim
+            },
+
+            Rewards = { -- A table containing all the rewards for processing. [itemName] = itemAmount
+                ['coke_brick'] = 1
+            },
+
+            Requirements = { -- A table containing all the reqruiments needed for processing the drug.
+                ['coke_bag'] = 10
+            }
+        },
+    }
+}
+```

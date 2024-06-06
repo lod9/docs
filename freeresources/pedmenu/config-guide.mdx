@@ -1,0 +1,34 @@
+---
+title: 'Configuration Guide'
+description: 'This is where you will find all the documentation covering the configuration for our script, if you need anything that is not a configurable option do not hesitate to reach out to use via [discord](https://discord.gg/trase)!'
+icon: 'pencil'
+---
+
+### Configuration Guide
+<Warning>
+Requires [trase_discord](https://github.com/ImTrase/trase_discord)
+</Warning>
+<Info>
+This is a model changer, you will need to add addon peds yourself then configure them below. You can find some nice ones [here](https://discord.gg/w3x9Vxqtfn).
+</Info>
+
+For this script to work it requires my discord API resource, this is to check for discord roles.
+```lua config.lua
+config.discord = { -- Required trase_discord: https://github.com/ImTrase/trase_discord
+    enabled = true,
+    role = '', -- The discord role of the donator, ensure the value is "number"
+    refresh = { -- A command to refresh permissions. (Used to prevent discord rate limits) [ONLY FOR DISCORD PERMS]
+        enabled = true, -- Enable commmand?
+        command = 'pedrefresh', -- The command to refresh perms
+        cooldown = 10 -- Seconds to wait between usage
+    }
+}
+```
+
+This is where you will more peds to the pedmenu. (you need to stream any addon peds)
+```lua config.lua
+config.peds = {
+    [1] = {label = 'DC', model = `a_m_m_fatlatin_01`},
+    [2] = {label = 'Monkey', model = `a_c_chimp`},
+}
+```

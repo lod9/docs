@@ -1,0 +1,53 @@
+---
+title: 'Configuration Guide'
+description: 'This is where you will find all the documentation covering the configuration for our script, if you need anything that is not a configurable option do not hesitate to reach out to use via [discord](https://discord.gg/trase)!'
+icon: 'pencil'
+---
+
+## Configuration Guide
+
+<Warning>
+Currently only supports ESX, QBCore will be available soon.
+</Warning>
+
+This is where you will configure the amount the each specific account is allowed to have. Currently the only accounts are: bank, money, black_money. The default cap is set to $5,000,000.
+```lua
+cfg.max = { -- (type: table)
+    ['bank'] = 5000000, -- (type: integer)
+    ['money'] = 5000000, -- (type: integer)
+    ['black_money'] = 5000000 -- (type: integer)
+}
+```
+
+The administration groups that will not be checked, and that are whitelisted to have as much money they wish. (The check uses the xPlayer.getGroup() so only support ESX groups) [Currently ESX Only supports 3 administrative groups. (user, mod, admin)]
+
+```lua
+cfg.whitelisted_groups = { 'admin' } -- (type: table)
+```
+##
+
+<Tip>
+Will always log to discord as long as the cfg.webhook is a valid webhook.
+</Tip>
+
+The flag is the option that will happen when the player is caught having the capped amount. 3 Types are allowed:
+1. **Kick**
+- Kicks & Wipes the players account money.
+2. **Wipe**
+- Only wipes the account that has the money.
+3. **Log**
+- Will only send a discord log and will not wipe or kick the player.
+
+```lua
+cfg.flag = 'kick' -- (type: string)
+```
+
+The amount of time (in seconds) that the script will check all the players for there money.
+```lua
+cfg.checkTime = 15 -- (type: integer)
+```
+
+A valid discord webhook where logs will be sent when a player has to much money in a specific account.
+```lua
+cfg.webhook = '' -- (type: string)
+```

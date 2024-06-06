@@ -1,0 +1,28 @@
+---
+title: Get Username
+icon: 'user-tag'
+---
+
+This function takes a single parameter 'target', which is the ID of the player that the Discord user data should be retrieved.It returns a string that represents the user's Discord username. **If the user is not in the discord, or there data could not be loaded, it will return false for all functions**.
+
+```lua
+exports.trase_discord:getUsername(serverId)
+```
+- serverId: ``integer``
+    - The server ID of the player you want to retrieve the discord info for.
+
+Returns: ``false`` or ``string``
+
+## Examples
+```lua
+RegisterCommand('getUsername', function(src)
+    local username = exports.trase_discord:getUsername(src)
+
+    if (not username) then
+        -- Player was not in the discord, no username found
+        return
+    end
+
+    print(username)
+end)
+```

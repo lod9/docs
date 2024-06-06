@@ -1,0 +1,56 @@
+---
+title: 'Ranks Guide'
+description: 'This is where you can configure the ranks, it comes default with 4 configured ranks, but you can remove or add as many as you want.'
+icon: 'ranking-star'
+---
+
+## Default Rank Configuration
+```lua config.lua
+Config.Ranks = {
+    [1] = {
+        RankLabel = 'Rank: 2',
+        SellRequirement = 100,
+        Modifiers = {
+            SellTime = 10, -- The time (in seconds) it takes to sell the drug on the phone with the ped
+            SellPrice = 10 -- Sell 10% more
+        }
+    },
+    [2] = {
+        RankLabel = 'Rank: 3',
+        SellRequirement = 500,
+        Modifiers = {
+            SellTime = 8, -- The time (in seconds) it takes to sell the drug on the phone with the ped
+            SellPrice = 15 -- Sell 15% more
+        }
+    },
+    [3] = {
+        RankLabel = 'Rank: 4',
+        SellRequirement = 750,
+        Modifiers = {
+            SellTime = 6, -- The time (in seconds) it takes to sell the drug on the phone with the ped
+            SellPrice = 20 -- Sell 20% more
+        }
+    },
+    [4] = {
+        RankLabel = 'Rank: 5',
+        SellRequirement = 1000,
+        Modifiers = {
+            SellTime = 4, -- The time (in seconds) it takes to sell the drug on the phone with the ped
+            SellPrice = 25 -- Sell 25% more
+        }
+    },
+}
+```
+
+#### Now lets break it all down.
+```lua examples
+RankLabel -- The label that the will be displayed when the player checks there dealer rank.
+SellRequirement -- The amount of drugs they are required to sell to reach the rank.
+Modifiers -- This is where you can give rewards depending on the players rank.
+Modifiers.SellTime -- The time (in seconds) it takes to sell the drug.
+Modifiers.SellPrice -- The % increase the drug sells for.
+```
+
+<Warning>
+For any further help or questions you can contact us via [discord](https://discord.gg/trase)!
+</Warning>

@@ -1,0 +1,28 @@
+---
+title: 'Drugs Guide'
+description: 'This is where you can find the configuration guide to help you configure the drugs in your server to utilize our dealer system.'
+icon: 'capsules'
+---
+
+<Warning>
+Make sure to follow the configuration guide for the paytype explanation.
+</Warning>
+
+```lua server.lua
+Config.Drugs = {
+    [1] = { -- Lets add our coke drug
+        Label = 'Coke', -- The label/name of the drug
+        Item = 'coke_bag', -- The unique spawn name for the item (if you are not sure try giving yourself the item via administrator commands)
+        Price = 2000, -- The amount of money it will give you. (you can configure the pay type)
+        RequiredAmount = 1, -- The minimum amount of drugs required to sell
+        DenyChance = 0 -- The chance that the ped will deny the sale and alert the police. (25 = 25% chance to deny)
+    },
+    [2] = { -- Lets add one more, our meth drug
+        Label = 'Meth', -- The label/name of the drug
+        Item = 'meth_bag', -- The unique spawn name for the item (if you are not sure try giving yourself the item via administrator commands)
+        Price = 2000, -- The amount of money it will give you. (you can configure the pay type)
+        RequiredAmount = 1, -- The minimum amount of drugs required to sell
+        DenyChance = 0 -- The chance that the ped will deny the sale and alert the police. (25 = 25% chance to deny)
+    },
+}
+```

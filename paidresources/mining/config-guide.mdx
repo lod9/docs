@@ -1,0 +1,85 @@
+---
+title: 'Configuration Guide'
+description: 'This is where you will find all the documentation covering the configuration for our script, if you need anything that is not a configurable option do not hesitate to reach out to use via [discord](https://discord.gg/trase)!'
+icon: 'pencil'
+---
+
+### Configuration Guide
+
+This allows for debugging to help locate an issue.
+```lua config.lua
+Config.Debug = false -- (type: boolean)
+```
+
+This is where you can enable/disable/setup a mining job
+```lua config.lua
+Config.Job = {  -- (type: table)
+    Enabled = false, -- (type: boolean)
+    Job = 'miner' -- (type: string)
+}
+```
+
+Here is where you can decide what framework you want to use. __Note:__ If you choose "custom framework" you need to setup the framework and it's functions in via "frameworks/custom.lua".
+````md
+0 = ESX
+1 = QBCore
+2 = Custom Framework
+````
+
+```lua Config.lua
+Config.Framework = 0 -- (type: integer)
+```
+
+Can be set to  framework OR ox_inventory (if set to framework it will use framework data to check things like if owns a pickaxe, otherwise it will use ox_inventory)
+```lua Config.lua
+Config.ItemData = 'framework' -- (type: string)
+```
+
+The max amount of rocks that will be spawned at once. (increasing this may cause more performance issues, especially if not using 3-erd eye)
+```lua Config.lua
+Config.MaxRocks = 20 -- (type: integer)
+```
+
+Time in seconds it takes to create another rock after one is mined.
+```lua Config.lua
+Config.TimeOut = 10 -- (type: integer)
+```
+
+If enabled it will utilize ox_target, otherwise it will use markers and 3d text. (recommended to have this enabled, really helps performance)
+```lua Config.lua
+Config.Target = false -- (type: boolean)
+```
+
+This is where you can configure what happens to the pickaxe after each rock is mined.
+````md
+none = Nothing happens, keep pickaxe
+break = Chance to break, edit the % below.
+degrade = Decrease the grade of the weapon (requires ox_inventory, edit the % below)
+````
+
+```lua Config.lua
+Config.Pickaxe = 'break' -- (type: string)
+```
+
+% chance to break (only works if option above is set to break)
+```lua Config.lua
+Config.BreakChance = 25 -- (type: integer)
+```
+
+% the pickaxe degrades at per rock mined (only works if option above is set to degrade)
+```lua Config.lua
+Config.DegradeAmount = 5 -- (type: integer)
+```
+
+This is where you can setup the shop.
+```lua Config.lua
+Config.Shop = {
+    Type = 'ox_context', -- ox_inventory OR ox_context
+    Price = 500, -- Please keep in mind, if using ox_inventory you edit prices in the ox_inventory/data/shops.lua
+    Weapon = 'WEAPON_PICKAXE' -- Please keep in mind, if using ox_inventory you edit item in the ox_inventory/data/shops.lua
+}
+```
+
+<Warning>
+The rest of the config is pretty self-explanitory and does not need any documentation, but if you have a question about anything contact me via discord.
+</Warning>

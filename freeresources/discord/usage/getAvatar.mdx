@@ -1,0 +1,28 @@
+---
+title: Get Avatar
+icon: "user"
+---
+
+This function takes a single parameter 'target', which is the ID of the player that the Discord user data should be retrieved.  It returns a string that represents the URL of the user's Discord avatar. **If the user is not in the discord, or there data could not be loaded, it will return false for all functions**.
+
+```lua
+exports.trase_discord:getAvatar(serverId)
+```
+- serverId: ``integer``
+    - The server ID of the player you want to retrieve the discord info for.
+
+Returns: ``false`` or ``string``
+
+## Examples
+```lua
+RegisterCommand('getAvatar', function(src)
+    local avatar = exports.trase_discord:getAvatar(src)
+
+    if (not avatar) then
+        -- Player was not in the discord, no avatar found
+        return
+    end
+
+    print(avatar)
+end)
+```

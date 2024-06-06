@@ -1,0 +1,28 @@
+---
+title: Get Roles
+icon: 'user-pen'
+---
+
+This function takes a single parameter 'target', which is the ID of the player that the Discord user data should be retrieved. It returns a table that contains Discord user data, including the user's name, discriminator, and avatar. **If the user is not in the discord, or there data could not be loaded, it will return false for all functions**.
+
+```lua
+exports.trase_discord:getUser(serverId)
+```
+- serverId: ``integer``
+    - The server ID of the player you want to retrieve the discord info for.
+
+Returns: ``false`` or ``table``
+
+## Examples
+```lua
+RegisterCommand('getDiscordUser', function(src)
+    local user = exports.trase_discord:getUser(src)
+
+    if (not user) then
+        -- Player was not in the discord, no user found
+        return
+    end
+
+    print(json.encode(user, { indent = true }))
+end)
+```

@@ -1,0 +1,28 @@
+---
+title: Get Roles
+icon: 'briefcase'
+---
+
+This function takes a single parameter 'target', which is the ID of the player that the Discord user data should be retrieved. It returns a table containing all roles found on the user. **If the user is not in the discord, or there data could not be loaded, it will return false for all functions**.
+
+```lua
+exports.trase_discord:getRoles(serverId)
+```
+- serverId: ``integer``
+    - The server ID of the player you want to retrieve the discord info for.
+
+Returns: ``false`` or ``table``
+
+## Examples
+```lua
+RegisterCommand('getRoles', function(src)
+    local roles = exports.trase_discord:getRoles(src)
+
+    if (not roles) then
+        -- Player was not in the discord, no user found
+        return
+    end
+
+    print(json.encode(roles, { indent = true }))
+end)
+```

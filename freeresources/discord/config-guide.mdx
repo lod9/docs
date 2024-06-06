@@ -1,0 +1,21 @@
+---
+title: 'Configuration Guide'
+description: 'This is where you will find all the documentation covering the configuration for our script, if you need anything that is not a configurable option do not hesitate to reach out to use via [discord](https://discord.gg/trase)!'
+icon: 'pencil'
+---
+
+### Configuration Guide
+<Tip>
+If you don't know how to get your Bot Token or Guild ID, look it up on youtube, there are countless tutorials!
+</Tip>
+
+
+You have to create a new discord bot token, this can be created [here](https://discord.com/developers/applications). It needs to have administrator permissions, this is so it can pull players discord roles. `script is open source`
+```lua
+Config.Token = '' -- (type: string)
+```
+
+Discord Guild Id, to get this enable discord developer mode and right click your servers discord icon, and press "Copy ID". For a more in depth tutorial follow [this](https://poshbot.readthedocs.io/en/latest/guides/backends/setup-discord-backend/#:~:text=Find%20your%20Guild%20ID%20(Server%20ID),-You%20will%20need&text=Go%20to%20Appearance%20and%20enable,can%20disable%20Developer%20Mode%20now.).
+```lua config.lua
+Config.Guild = '' -- (type: string)
+```

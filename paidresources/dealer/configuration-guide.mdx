@@ -1,0 +1,174 @@
+---
+title: 'Configuration Guide'
+description: 'This is where you will find all the documentation covering the configuration for our script, if you need anything that is not a configurable option do not hesitate to reach out to use via [discord](https://discord.gg/trase)!'
+icon: 'pencil'
+---
+
+<Tip>
+For easier to read reasons both the ranks & drug configuration have there own category.
+</Tip>
+
+<Tip>
+Make sure to configure the server.lua config too, scroll down to view the configuration guide for that.
+</Tip>
+
+#### client & server sided config
+
+Here is where you can decide what framework you want to use. __Note:__ If you choose "custom framework" you need to setup the framework and it's functions in via "frameworks/custom.lua".
+````md
+0 = ESX
+1 = QBCore
+2 = Custom Framework
+````
+
+```lua Config.lua
+config.framework = 0 -- (type: integer)
+```
+
+Here is where you can add/remove the commands that will start the selling process.
+```lua Config.lua
+Config.SellCommands = { 'dealer', 'selldrugs', 'trap' } -- (type: table)
+```
+
+Here is where you can enable/disable the context menu where if the player has more then 1 drug available to sell then it will pop up a selection menu.
+```lua Config.lua
+Config.EnableSelection = true -- (type: boolean)
+```
+
+Here is where you can decide the spawn distance that you want the ped spawning from the player.
+```lua Config.lua
+Config.SpawnDistance = 50.0 -- (type: integer)
+```
+
+The time (in seconds) it takes to sell on level 1
+```lua Config.lua
+Config.DefaultSellTime = 12 -- (type: integer)
+```
+
+Here is where you can enable/disable the option to only allow selling at night.
+```lua Config.lua
+Config.SellOnlyNight = true -- (type: boolean)
+```
+
+Here is where you can add a list of jobs that is not allowed to sell drugs.
+```lua Config.lua
+Config.BlacklistedJobs = { -- (type: table)
+    'police',
+    'ambulance'
+}
+```
+
+Here is where you can add a list of blacklisted coords with a radius to prevent drug selling.
+```lua Config.lua
+Config.BlacklistedLocations = { -- (type: table)
+    vec4(0.0, 0.0, 0.0, 25.0), -- X, Y, Z, Radius
+}
+```
+
+Here is where you can enable/disable the police job, if enabled the configured job will get alerts if a client declines a drug sale.
+```lua Config.lua
+Config.Police = { -- (type: table)
+    Enabled = true, -- (type: boolean)
+    Job = 'police' -- (type: string)
+}
+```
+
+Here is where you can configure the notification texts of when a ped declines a sale. (it will automatically select one from this list)
+```lua Config.lua
+Config.DenyStrings = {
+    'This stuff is shitty!',
+    'I want the real shit, what is this?!',
+    'This shit wack.',
+}
+```
+
+Here is where you can change all the text/notifications (support for other languages)
+```lua Config.lua
+Config.Strings = {
+    ['NoDrugs'] = 'You have no drugs to sell!',
+    ['MenuTitle'] = 'Select Drug Option',
+    ['NoClientFound'] = 'No clients were found, try moving around.',
+    ['ClientFound'] = 'Client found, they\'re approaching now.',
+    ['ClientScared'] = 'The client got scared and ran away.',
+    ['NoInVeh'] = 'You can\'t sell drugs while in a vehicle.',
+    ['SoldDrug'] = 'You sold {DRUG_NAME} for ${DRUG_PRICE}.',
+    ['RankUp'] = 'Congrats! You have sold a total of {TOTAL_DRUGSALE} drugs and ranked up to {RANK_LABEL}!',
+    ['SellIncrease'] = 'You got a {DRUG_MULTI}% sell increase due to your rank!',
+    ['SellIncreaseDiscord'] = 'You got a {DRUG_MULTI}% sell increase due to being a donator!',
+    ['AlertPolice'] = 'A suspect spotted selling drugs!',
+    ['BlacklistedJob'] = 'You are not allowed to sell drugs with this job!',
+    ['CantSellHere'] = 'You cannot sell drugs here!',
+    ['CurrentlyDrugRank'] = 'You are currently rank {DRUG_RANK}, and have sold a total of x{DRUG_TOTALSOLD} drugs!',
+    ['NotNight'] = 'You can only sell drugs during night time!',
+}
+```
+
+Here is where you can add/replace/remove the ped models that are spawned to come and collect the drugs.
+<Warning>
+The ped model must start with the back tick (`) otherwise it will not work properly.
+</Warning>
+```lua config.lua
+Config.PedModels = { -- (type: table)
+    `a_m_m_salton_04`,
+    `a_m_m_salton_03`,
+    `a_m_m_rurmeth_01`,
+    `a_m_m_skidrow_01`,
+    `a_m_m_socenlat_01`,
+    `a_m_m_soucent_01`,
+    `a_m_m_soucent_03`,
+    `a_m_m_soucent_04`,
+    `a_m_o_acult_02`,
+    `a_m_o_soucent_02`,
+    `a_m_o_soucent_03`,
+    `a_m_o_tramp_01`,
+    `csb_tonya`,
+    `g_f_y_ballas_01`,
+    `g_f_y_families_01`,
+    `g_f_y_lost_01`,
+    `g_f_y_vagos_01`,
+}
+```
+
+#### Server Sided Config
+
+<Warning>
+On QBCore if you set the paytype to "markedbills" then make sure to decrease the price for each drug + disable the "RandomizePay" option.
+</Warning>
+
+This is where you will set the specific paytype that it will give you when a drug sale is completed.
+```md
+ESX Money Types: "money", "bank", "black_money"
+QBCore Money Types: "cash", "markedbills"
+```
+
+```lua server.lua
+Config.PayType = 'black_money' -- (type: string)
+```
+
+If enabled, it will add a random number 1-200
+```lua server.lua
+Config.RandomizePay = true -- (type: boolean)
+```
+
+This is where you can enable/disable & configure the command for players to check there dealer rank.
+```lua server.lua
+Config.Command = { -- (type: table)
+    Enabled = true, -- (type: boolean)
+    Command = 'dealerrank' -- (type: string)
+}
+```
+
+
+This is where you can enable/disable the option to use discord benifits, you can make where people with a specific discord role gets a increased sell price. **(Requires [trase_discord](https://github.com/ImTrase/trase_discord))**
+```lua server.lua
+Config.Discord = {
+    Enabled = false, -- Requires: https://github.com/ImTrase/trase_discord
+    ResourceName = 'trase_discord', -- In case you renamed the resource.
+    Roles = {
+        [1] = {
+            RoleID = 1094982744133619782,
+            SellPrice = 25 -- Sell 25% more (adds on to the rank)
+        }
+    }
+}
+```

@@ -1,0 +1,51 @@
+---
+title: 'Package Guide'
+description: 'This is where you can learn how to add packages from your tebex to the script to allow your customers to claim there rewards automatically.'
+icon: 'box-archive'
+---
+
+<Warning>
+Make sure to take time and configure this properly, this can get confusing but we promise the script works! If you need any support please reach out to us via discord!
+</Warning>
+
+## Add Packages
+1. Open the config file and locate `config.packages`.
+2. Create a new package by following this format:
+```lua config.lua
+['Package Name On Tebex'] = {
+    rewards = {
+        ['item_name'] = amount_to_give,
+        ['item_name'] = amount_to_give,
+        ['item_name'] = amount_to_give,
+    }
+}
+```
+
+<Tip>
+The "Package Name On Tebex" needs to be **EXACTLY** the same as it is displayed on the tebex, even a misplaced space can throw it off. (its best to just copy/paste the name)
+</Tip>
+
+## Example
+For this example I will be using the "Money" packages on [Bandit RP](https://banditrp.vip/category/money).
+
+<img
+  className="rounded-md"
+  src="https://cdn.discordapp.com/attachments/1109071192712814593/1170741986907660450/image.png?ex=655a2571&is=6547b071&hm=f05914bd0cff18f94ab23aeb4d103e68abdb4e33186b8fa4b0538b3acc983d3c&"
+/>
+
+<img
+  className="rounded-md"
+  src="https://cdn.discordapp.com/attachments/1119540289196003410/1170743828404252783/image.png?ex=655a2728&is=6547b228&hm=23c1b55ec30e6dc22aebb799561b28f59eddb74d4f5b96c84d9d41af0e55c8cc&"
+/>
+
+1. We will copy the Name directly from tebex.
+2. We will paste it directly into the `['Package Name On Tebex']`
+3. Then after that we will configure the rewards, we use ESX so we will add money.
+
+```lua config.lua
+['Money Tier #1'] = {
+    rewards = {
+        ['money'] = 50000,
+    }
+}
+```

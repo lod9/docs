@@ -1,0 +1,12 @@
+---
+title: 'Common Issues'
+description: 'This is where you can find the most common issues and fixes with our script. (if the script is new, this may be empty and will be updated overtime)'
+icon: 'triangle-exclamation'
+---
+
+## Issue #1: "Inventory too full"
+Explanation:
+This problem commonly occurs on QBCore servers and can also happen on ESX servers. It occurs when the paytype in the configuration is set to something like "markedbills," which indicates that a large item is being given as a reward. When the price is set to 2000 or when the "RandomizePay" option is turned on, the system tries to provide a significant amount of bigger bags or items as a result.
+
+Solution:
+If enabled, disable the Config.RandomizePay and decrease the sale price of all drugs.

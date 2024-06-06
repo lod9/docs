@@ -1,0 +1,195 @@
+---
+title: 'Getting Started'
+description: "This script redefines the mining experience in FiveM with a unique blend of features designed to elevate your gameplay, this script allows your community to mine rocks and collect configurable rewards. This script has a lot of unique features while being extremely optimized unlike other mining script alternatives."
+icon: 'circle-info'
+---
+
+## Getting Started
+
+<Warning>
+Make sure to follow the correct framework installation guide.
+</Warning>
+
+### Installation Guide (Setting Up Resource)
+
+1. Download the most up to date resource from keymaster.
+2. Drag the "trase_mining" into your resources. `(You can rename the resource)`
+3. Drag the "trase_pickaxe" into your resources. `(You can rename the resource)`
+4. Open the "config.lua" then follow the configuration guide.
+5. Add "ensure trase_mining" & "ensure trase_pickaxe" to your server.cfg.
+6. Make sure everything works as expected, for any support contact us via discord.
+
+### ESX Installation (Setting Up Custom Pickaxe + Items)
+If you are not using ox_inventory and on ESX then to add the custom pickaxe model you must do the following:
+
+#### Install Pickaxe
+My mining system comes with a unique addon pickaxe to mine rocks, to add it via ESX follow these steps:
+1. Goto ``es_extended/config.weapons.lua``
+2. Locate "Config.Weapons" and add this right under the bat:
+```lua
+{ name = 'WEAPON_PICKAXE', label = 'Pickaxe', components = {} },
+```
+
+#### Install Items
+My mining system comes with 11 pre-configured items for mining, you can add more. But to install these pre-configured items please do the following:
+1. Open your database and execute this query:
+```sql
+INSERT INTO `items` (`name`, `label`, `weight`) VALUES
+  ('coal', 'Coal', 25),
+  ('raw_copper', 'Raw Copper', 25),
+  ('raw_diamond', 'Raw Diamond', 25),
+  ('raw_gold', 'Raw Gold', 25),
+  ('raw_iron', 'Raw Iron', 25),
+  ('raw_metal', 'Raw Metal', 25),
+  ('smelted_copper', 'Copper', 25),
+  ('smelted_diamond', 'Diamond', 25),
+  ('smelted_gold', 'Gold', 25),
+  ('smelted_iron', 'Iron', 25),
+  ('smelted_metal', 'Metal', 25),
+;
+```
+
+### QBCore Installation (Setting Up Custom Pickaxe + Items)
+My mining system comes with a unique addon pickaxe to mine rocks, to add it via QBCore follow these steps:
+1. Goto ``qb-core/shared/weapons.lua``
+2. Add This:
+```lua
+[`weapon_pickaxe`] = {['name'] = 'weapon_pickaxe', ['label'] = 'Pickaxe', ['weapontype'] = 'Melee',	['ammotype'] = nil, ['damagereason'] = 'Melee killed / Whacked / Executed / Beat down / Murdered / Battered'},
+```
+3. Goto ``qb-core/shared/items.lua``
+4. Add This:
+```lua
+  ['weapon_pickaxe']                  = {['name'] = 'weapon_pickaxe',                    ['label'] = 'Pickaxe',                   ['weight'] = 1000,         ['type'] = 'weapon',     ['ammotype'] = nil,                          ['image'] = 'WEAPOON_PICKAXE.png',                   ['unique'] = true,         ['useable'] = false,     ['description'] = 'Used to mine rocks' },
+```
+
+#### Install Items
+My mining system comes with 11 pre-configured items for mining, you can add more. But to install these pre-configured items please do the following:
+1. Goto ``qb-core/shared/items.lua``
+2. Add This:
+```lua
+    -- Mining System
+    ['coal']                            = {['name'] = 'coal',                              ['label'] = 'Coal',                      ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'coal.png',                      ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be sold.' },
+    ['raw_copper']                      = {['name'] = 'raw_copper',                        ['label'] = 'Raw Copper',                ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'raw_copper.png',                ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be smelted.' },
+    ['raw_diamond']                     = {['name'] = 'raw_diamond',                       ['label'] = 'Raw Diamond',               ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'raw_diamond.png',               ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be smelted.' },
+    ['raw_gold']                        = {['name'] = 'raw_gold',                          ['label'] = 'Raw Gold',                  ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'raw_gold.png',                  ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be smelted.' },
+    ['raw_iron']                        = {['name'] = 'raw_iron',                          ['label'] = 'Raw Iron',                  ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'raw_iron.png',                  ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be smelted.' },
+    ['raw_metal']                       = {['name'] = 'raw_metal',                         ['label'] = 'Raw Metal',                 ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'raw_metal.png',                 ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be smelted.' },
+    ['smelted_copper']                  = {['name'] = 'smelted_copper',                    ['label'] = 'Smelted Copper',            ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'smelted_copper.png',            ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be sold.' },
+    ['smelted_diamond']                 = {['name'] = 'smelted_diamond',                   ['label'] = 'Smelted Diamond',           ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'smelted_diamond.png',           ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be sold.' },
+    ['smelted_gold']                    = {['name'] = 'smelted_gold',                      ['label'] = 'Smelted Gold',              ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'smelted_gold.png',              ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be sold.' },
+    ['smelted_iron']                    = {['name'] = 'smelted_iron',                      ['label'] = 'Smelted Iron',              ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'smelted_iron.png',              ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be sold.' },
+    ['smelted_metal']                   = {['name'] = 'smelted_metal',                     ['label'] = 'Smelted Metal',             ['weight'] = 25,           ['type'] = 'item',       ['image'] = 'smelted_metal.png',             ['unique'] = false,         ['useable'] = false,     ['description'] = 'Can be sold.' },
+```
+
+### OX Inventory Installation
+Installation guide if you are using the very popular inventory system [ox_inventory](https://github.com/overextended/ox_inventory).
+
+#### Creating Pickaxe
+With my mining script is comes with a addon pickaxe model (this is handled as a weapon), so to install it you must do the follwing:
+1. Goto the following: ``ox_inventory/data/weapons.lua``. 
+2. Add this:
+```lua
+['WEAPON_PICKAXE'] = {
+    label = 'Pickaxe',
+    weight = 1134,
+    durability = 0.1,
+},
+```
+
+#### Creating Shop
+There is a configurable option to allow the shop to open an ox_inventory shop when talking to the ped. **(keep in mind for this to work Config.Shop.Type must be set to ``ox_inventory``)**
+
+Installation Guide:
+1. Goto the following: ``ox_inventory/data/shops.lua``
+2. Add this:
+```lua
+MiningShop = {
+    name = 'Mining Shop',
+    inventory = {
+        { name = 'WEAPON_PICKAXE', price = 1000 },
+    }
+},
+```
+
+#### Installing Items
+My mining system comes with 11 pre-configured items for mining, you can add more. But to install these pre-configured items please do the following:
+1. Goto the following: ``ox_inventory/data/items.lua``
+2. Add this:
+```lua
+["coal"] = {
+    label = "Coal",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+
+["raw_copper"] = {
+    label = "Raw Copper",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+
+["raw_diamond"] = {
+    label = "Raw Diamond",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+
+["raw_gold"] = {
+    label = "Raw Gold",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+
+["raw_iron"] = {
+    label = "Raw Iron",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+
+["raw_metal"] = {
+    label = "Raw Metal",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+
+["smelted_copper"] = {
+    label = "Copper",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+
+["smelted_diamond"] = {
+    label = "Diamond",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+
+["smelted_gold"] = {
+    label = "Gold",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+
+["smelted_iron"] = {
+    label = "Iron",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+
+["smelted_metal"] = {
+    label = "Metal",
+    weight = 25,
+    stack = true,
+    close = true,
+},
+```

@@ -1,0 +1,132 @@
+---
+title: 'Configuration Guide'
+description: 'This is where you will find all the documentation covering the configuration for our script, if you need anything that is not a configurable option do not hesitate to reach out to use via [discord](https://discord.gg/trase)!'
+icon: 'pencil'
+---
+
+
+### Framework Selection
+This is where you can choose your framework, recommended to just leave this on "auto".
+```lua Config.lua
+Config.Framework = 'auto' -- (type: string)
+```
+
+### Job Restriction
+Restricts script access. false allows access to all players. A specific job name restricts access to players with that job.
+```lua Config.lua
+Config.Job = false -- (type: boolean OR string)
+```
+
+### Progress Bar
+Enable the progress bar. (Requires [ox_lib](https://github.com/overextended/ox_lib/releases/))
+```lua Config.lua
+Config.Progress = true -- (type: boolean)
+```
+
+### 3-erd Eye Intergration
+This will enable or disable the 3-erd eye option. (requiers [ox_target](https://github.com/overextended/ox_target))
+```lua Config.lua
+Config.Target = true -- (type: boolean)
+```
+
+### Duration To Find Client
+How long it takes to find a client (in seconds) (min, max) e.g. 5-7 seconds
+```lua Config.lua
+Config.FindClientTimer = {5, 7} -- (type: table)
+```
+
+### Cleanup Duration
+Time in seconds to delete the object or ped once the mission is complete
+```lua Config.lua
+Config.Wait = 60 -- (type: integer)
+````
+
+### Blip Custimization
+This is where you can enable/disable & customize the delivery blip.
+```lua Config.lua
+Config.Blip = { -- (type: table)
+    Enabled = true, -- (type: boolean)
+    Sprite = 1, -- (type: integer)
+    Color = 5, -- (type: integer)
+    Scale = 0.8, -- (type: integer)
+}
+```
+
+### Job Payout
+- This is that people do not need to configure each and every mission payout.
+- If you wish to have a specific job pay more or less you can set that in the mission table.
+```lua Config.lua
+Config.Reward = {
+    Item = 'money', -- 'money' OR 'black_money' OR 'bank' -- (type: string)
+    Amount = { 1000, 2500 } -- (min, max) e.g. $1000-$2500 -- (type: table)
+}
+```
+
+### Command Configuration
+```lua Config.lua
+Config.Command = { -- (type: table)
+    Enabled = true, -- (type: boolean)
+    Command = 'deliverfood' -- (type: string)
+}
+```
+
+### Mission Configuration
+- If MissionType is set to "dropoff" then HandOff coords is not required, and vice-versa.
+```lua Config.lua
+{
+    MissionType = 'dropoff', -- 'dropoff' OR 'handoff'
+    DropOff = vec3(-824.7894, 422.4605, 92.1244), -- Where the player needs to drop off the food and the bag is placed.
+    -- HandOff = vec4(-824.7828, 422.3705, 91.1242, 358.7914), -- x, y, z, heading: Where the ped is located to hand off the food.
+    -- If below is specified it will override the Config.Reward
+    -- Reward = {
+    --     Item = 'money', -- 'money' OR 'black_money' OR 'bank'
+    --     Amount = { 100, 200 } -- (min, max) e.g. $100-$200
+    -- }
+},
+{
+    MissionType = 'handoff',
+    HandOff = vec4(-762.4222, 431.6999, 99.0545, 19.3861),
+},
+{
+    MissionType = 'dropoff',
+    DropOff = vec3(-297.8313, 380.0955, 112.0952),
+},
+```
+
+### Food Models
+This is where you can add/remove food props that are used.
+```lua Config.lua
+Config.FoodModels = { -- (type: table)
+    {
+        Model = `ng_proc_food_bag01a`, -- Model Hash
+        Rotation = vector3(0.0, -100.0, 0.0), -- Vector3 for rotation of the object
+        Position = vector3(0.3, 0.0, 0.05) -- X = Down, Y = Forward, Z = Right -- Vector3 for positioning of object
+    },
+}
+```
+
+### Ped Models
+The list of models that the customer can be.
+```lua Config.lua
+Config.CustomerPedModels = { -- (type: table)
+    `a_f_m_bevhills_02`,
+    `a_f_m_bevhills_01`,
+    `a_f_m_bevhills_03`,
+    `a_m_m_bevhills_01`,
+    `a_m_m_bevhills_02`,
+    `a_f_y_bevhills_01`,
+    `a_f_y_bevhills_02`,
+    `a_f_y_bevhills_03`,
+    `a_f_y_bevhills_04`,
+    `a_m_y_bevhills_01`,
+    `a_m_y_bevhills_02`,
+}
+```
+
+### Custom Notifications
+- Param returns a table containing: data.type, data.title, data.description
+```lua Config.lua
+Config.Notify = function(data)
+    lib.notify(data)
+end
+```

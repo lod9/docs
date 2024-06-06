@@ -1,0 +1,75 @@
+---
+title: Has Role
+icon: "user-slash"
+---
+
+This function takes three parameters: 'target', which is the ID of the player who you want to get the role information that should be checked, 'role', which is either a single integer or a table of integers representing the role(s) to be checked, and 'stack', which is an optional boolean value that determines whether the function should return all found roles in a table or just the first found role. It returns either a boolean value indicating whether the player has the specified role or a table of all roles that were found, depending on the value of 'stack'.
+
+```lua
+exports.trase_discord:hasRole(serverId, role or roles, stack)
+```
+- serverId: ``integer``
+    - The server ID of the player you want to retrieve the discord info for.
+- role: ``integer`` or ``table``
+    - This function has a built in option where you can check for multiple discord roles in a table or just one.
+        - **Use role id's to check**
+- stack: ``boolean``
+    - If enabled and the roles is a table, then it will return a table of all found roles that were found in the table.
+
+Returns: ``boolean`` or ``table``
+
+## Examples
+
+### Check one role
+```lua
+RegisterCommand('checkrole', function(src)
+    local roleID = 1039982382268305472
+
+    local role = exports.trase_discord:hasRole(src, roleID)
+    if (not role) then
+        -- No roles found
+        return
+    end
+
+    print(('Role: %s was found.'):format(roleID))
+end)
+```
+
+### Check for multiple roles
+```lua
+RegisterCommand('checkrole', function(src)
+    local tableRoles = {
+        [1040852709726748732] = 'Owner',
+        [1039982382268305472] = 'Developer',
+        [1039960980467240972] = 'Admin'
+    }
+
+    local role, roleFound = exports.trase_discord:hasRole(src, tableRoles)
+    if (not role) then
+        -- No roles found
+        return
+    end
+
+    print(roleFound)
+    print(('Role: %s was found.'):format(tableRoles[roleFound]))
+end)
+```
+
+### Check for multiple roles, stack all roles found
+```lua
+RegisterCommand('stackroles', function(src)
+    local tableRoles = {
+        [1040852709726748732] = 'Owner',
+        [1039982382268305472] = 'Developer',
+        [1039960980467240972] = 'Admin'
+    }
+
+    local roles = exports.trase_discord:hasRole(src, tableRoles, true)
+    if (not roles) then
+        -- No roles found
+        return
+    end
+
+    print(json.encode(roles, { indent = true }))
+end)
+```

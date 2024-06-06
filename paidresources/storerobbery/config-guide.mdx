@@ -1,0 +1,131 @@
+---
+title: 'Configuration Guide'
+description: 'This is where you will find all the documentation covering the configuration for our script, if you need anything that is not a configurable option do not hesitate to reach out to use via [discord](https://discord.gg/trase)!'
+icon: 'pencil'
+---
+
+### Configuration Guide
+This is where you can choose your framework, recommended to just leave this on "auto".
+```lua Config.lua
+Config.Framework = 'auto' -- (type: string)
+```
+
+This is where you can set a cooldown to how long it takes a store to reset after it is robbed.
+```lua Config.lua
+Config.Cooldown = 5 -- (type: integer)
+```
+
+This is where you can set a global cooldown, so after or during a store robbery another cannot instantly be started.
+```lua Config.lua
+Config.GlobalCooldown = { -- (type: table)
+    Enabled = true, -- (type: boolean)
+    Time = 4 -- (type: integer)
+}
+```
+
+This will enable or disable the 3-erd eye option. (requiers [ox_target](https://github.com/overextended/ox_target))
+```lua Config.lua
+Config.Target = true -- (type: boolean)
+```
+
+This is where you can change and edit things about the progress bar.
+```lua Config.lua
+Config.Progress = {
+    Duration = 20, -- Time in seconds it takes to complete the NPC robbery. (type: integer)
+    Increases = { Aiming = 0.3, Shooting = 5.7 }, -- How much the progress increases when aiming or shooting. (type: table)
+    Bar = { -- Progress bar (type: table)
+        Enabled = true, -- Enable or disable the progress bar. (type: boolean)
+        Color = { 0, 255, 0, 200 }, -- RGBA (type: table)
+        Position = { 0.5, 0.15 }, -- X, Y (type: table)
+    },
+    HelpText = { -- Help text
+        Enabled = true, -- Enable or disable the help text that displays above the progress bar. (type: boolean)
+        Color = { 255, 255, 255, 255 }, -- RGBA (type: table)
+        Position = { 0.5, 0.10 }, -- X, Y (type: table)
+    }
+}
+```
+
+This is where you can change options about the cash register model, if you are using a custom store MLO this may need to be changed.
+````md
+Config.CashRegister = {
+    Model = `prop_till_01`, -- Model (type: hash)
+    BrokenModel = `prop_till_01_dam` -- Model (type: hash)
+}
+````
+
+This is where you can set a list of jobs that are not allowed to start store robberys.
+```lua Config.lua
+Config.BlacklistedJobs = {
+    ['police'] = true,
+    ['ambulance'] = true,
+    ['mechanic'] = true,
+}
+```
+
+This is where you can edit settings about the safe hack. Please note we have added support for 6 of the most popular hack minigames.
+
+```md Supported minigames
+Supported Hack Minigames (can be edited in modules/sync/client.lua):
+- ps-ui (reccomended): https://github.com/Project-Sloth/ps-ui
+- ultra-voltlab: https://github.com/ultrahacx/ultra-voltlab
+- ultra-keypadhack: https://github.com/ultrahacx/ultra-keypackhack
+- datacrack: https://github.com/utkuali/datacrack
+- howdy-hackminigame: https://github.com/HiHowdy/howdy-hackminigame
+
+- electus_hacking (paid): https://forum.cfx.re/t/qb-esx-paid-electus-hacking-hacker-job-terminal-hack/4989175
+```
+
+```lua Config.lua
+Config.Safes = { -- Safe Configuration
+    Hack = 'ps-ui', -- Hacking minigame, see above for a list of minigames.
+    Cooldown = 5, -- Time (in minutes) until the safe is reset.
+    CooldownOnAttempt = true, -- Enable cooldown as soon as a player attempts to open the safe.
+}
+```
+
+Used in disatch to alert police, dispatch can be edited in modules/sync/server.lua 
+```lua Config.lua
+Config.PoliceJobs = { 'police', 'sheriff' } -- (type: table)
+```
+
+This is where you can enable/disable a synchronized alarm sound when the store is being robbed
+```lua Config.lua
+Config.Alarm = {
+    Enabled = true, -- Enable or disable the alarm. (type: boolean)
+    Time = 4, -- Time in minutes until the alarm is disabled. (Make this matches up with the progress bar duration) (type: integer)
+    Distance = 70.0 -- Distance on how far the alarm can be heard. (type: integer)
+}
+```
+
+This is where you can configure the store robberys, you can add/remove as many as you want. (the script comes pre-configured with all 10 gas stations, but for this example I will only be showing one)
+```lua Config.lua
+Config.Stores = {
+    [1] = {
+        Ped = {
+            Enabled = true, -- Enable/Disable the ped robbery (type: boolean)
+            Model = `a_m_y_mexthug_01`, -- The ped model (type: hash)
+            Position = vec4(2555.5, 380.8461, 107.6230, 0.0), -- The location of the ped (x, y, z, heading) (type: vector4)
+            Rouge = { -- This is where you can edit settings about making the ped go rouge and defend the store.
+                Enabled = true, -- Enable/Disable (type: boolean)
+                Chance = 15, -- Percentage chance the ped will go rouge (type: integer)
+                Weapons = { `WEAPON_PISTOL`, `WEAPON_PUMPSHOTGUN`, `WEAPON_MICROSMG` }, -- The weapons that the ped will use, will randomly select from this table (type: table)
+            },
+            Rewards = { -- The rewards from picking up the bag after the ped throws it.
+                ['black_money'] = { 25000, 50000 }, -- [itemName] = { minAmount, maxAmount }
+            }
+        },
+        Safe = {
+            Enabled = true, -- Enable/Disable the safe robbery (type: boolean)
+            TargetCoords = vec3(2548.6, 384.8648, 108.06), -- If Config.Target is enabled, this is where the box will be placed (only touch if you know what you doing)
+            MarkerCoords = vec3(2549.3774, 384.8537, 108.6228), -- If Config.Target is disabled, this is where the marker will be placed (only touch if you know what you doing)
+            RequiredItems = { -- Then required items to hack the safe.
+                ['hacking_laptop'] = 1 -- [itemName] = amountRequired
+            },
+            Rewards = { -- The rewards from hacking the safe
+                ['black_money'] = { 25000, 50000 }, -- [itemName] = { minAmount, maxAmount }
+            }
+        },
+    },
+}
+```
