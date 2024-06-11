@@ -9,17 +9,58 @@ Make sure to take time and configure this properly, this can get confusing but w
 </Warning>
 
 ## Add Packages
-1. Open the config file and locate `config.packages`.
-2. Create a new package by following this format:
-```lua config.lua
-['Package Name On Tebex'] = {
-    rewards = {
-        ['item_name'] = amount_to_give,
-        ['item_name'] = amount_to_give,
-        ['item_name'] = amount_to_give,
-    }
-}
-```
+Click on "Integrations" and select "Game Servers"
+<img
+  className="rounded-md"
+  src="https://media.discordapp.net/attachments/1247867637711507517/1250055917165219971/image.png?ex=66698ccb&is=66683b4b&hm=2201049bd7f3eae7e81f11ccfa0bcf5d18de93f67cc527dcaed03cdadee29d4a&=&format=webp&quality=lossless&width=230&height=671"
+/>
+
+Click "Connect Game Server" 
+<img
+  className="rounded-md"
+  src="https://media.discordapp.net/attachments/1247867637711507517/1250056740381392966/image.png?ex=66698d8f&is=66683c0f&hm=ba382cf2095d3a6fec0916cbe430b3e712fac0acda86ba3d39b990bab91dd9f8&=&format=webp&quality=lossless&width=1440&height=233"
+/>
+
+Select "Plugin" 
+<img
+  className="rounded-md"
+  src="https://media.discordapp.net/attachments/1247867637711507517/1250057203151409172/image.png?ex=66698dfe&is=66683c7e&hm=b3a20b51233e2bdd2b4e6eeacd3b173e32e5490c719e47e63190d658c22611df&=&format=webp&quality=lossless&width=1440&height=465"
+/>
+
+Select "Packages and Continue" 
+<img
+  className="rounded-md"
+  src="https://media.discordapp.net/attachments/1247867637711507517/1250057834389966878/image.png?ex=66698e94&is=66683d14&hm=a40bbdd6f5662bab141037c92db7e963035b47bbcdbe9148ef30ed34416cfe65&=&format=webp&quality=lossless&width=1440&height=456"
+/>
+
+Copy and paste into your server.cfg file and "Continue"
+<img
+  className="rounded-md"
+  src="https://media.discordapp.net/attachments/1247867637711507517/1250058161134768270/image.png?ex=66698ee2&is=66683d62&hm=abdc74a814150e200f51a7fc8550e1618f1cb56de50e851f6bc89e3b63522db4&=&format=webp&quality=lossless&width=1440&height=538"
+/>
+
+Create a package
+<img
+  className="rounded-md"
+  src="https://media.discordapp.net/attachments/1247867637711507517/1250058573736710195/image.png?ex=66698f44&is=66683dc4&hm=47200a8bd5c8c297b824dd6e17abea7855f961af449cb7a38e8f9ff21d061bbc&=&format=webp&quality=lossless&width=1440&height=562"
+/>
+
+Click "Game Server Command" 
+<img
+  className="rounded-md"
+  src="https://media.discordapp.net/attachments/1247867637711507517/1250059053955158026/image.png?ex=66698fb7&is=66683e37&hm=c7bf4b0d5061bc6732c2fb8112c4634215bc826d1621cc4530801015a8a8620d&=&format=webp&quality=lossless&width=1440&height=212"
+/>
+
+Select your server and add and create the specified command
+<img
+  className="rounded-md"
+  src="https://media.discordapp.net/attachments/1247867637711507517/1250060389903896616/image.png?ex=666990f5&is=66683f75&hm=d4646106da75715d38b86612c680be3d426f2cc9127e9a54ecf01dd649a892dd&=&format=webp&quality=lossless&width=1440&height=420"
+/>
+``` gympo {transaction} {packageName} ```
+
+
+
+
 
 <Tip>
 The "Package Name On Tebex" needs to be **EXACTLY** the same as it is displayed on the tebex, even a misplaced space can throw it off. (its best to just copy/paste the name)
@@ -28,10 +69,7 @@ The "Package Name On Tebex" needs to be **EXACTLY** the same as it is displayed 
 ## Example
 For this example I will be using the "Money" packages on [Bandit RP](https://banditrp.vip/category/money).
 
-<img
-  className="rounded-md"
-  src="https://cdn.discordapp.com/attachments/1109071192712814593/1170741986907660450/image.png?ex=655a2571&is=6547b071&hm=f05914bd0cff18f94ab23aeb4d103e68abdb4e33186b8fa4b0538b3acc983d3c&"
-/>
+
 
 <img
   className="rounded-md"
